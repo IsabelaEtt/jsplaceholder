@@ -1,11 +1,9 @@
 const fs = require('fs');
 
 const startAlbum = 1;
-const endAlbum = 34;
-const photosPerAlbum = 10;
+const endAlbum = 10;
 let id = 1;
 
-// Lista de URLs variadas do Unsplash (adicione mais se quiser mais variedade)
 const urls = [
     "photo-1465101178521-c1a9136a3b99",
     "photo-1506744038136-46273834b3fb",
@@ -62,15 +60,16 @@ const urls = [
 let fotos = [];
 
 for (let albumId = startAlbum; albumId <= endAlbum; albumId++) {
-  for (let i = 0; i < photosPerAlbum; i++) {
-    const urlId = urls[Math.floor(Math.random() * urls.length)];
-    fotos.push({
-      id: id++,
-      albumId,
-      url: `https://images.unsplash.com/${urlId}?q=75&fm=jpg&w=600&fit=max`,
-      thumbnailUrl: `https://images.unsplash.com/${urlId}?q=75&fm=jpg&w=200&fit=max`
-    });
-  }
+    const photosPerAlbum = Math.floor(Math.random() * 5) + 2;
+    for (let i = 0; i < photosPerAlbum; i++) {
+        const urlId = urls[Math.floor(Math.random() * urls.length)];
+        fotos.push({
+            id: id++,
+            albumId,
+            url: `https://images.unsplash.com/${urlId}?q=75&fm=jpg&w=600&fit=max`,
+            thumbnailUrl: `https://images.unsplash.com/${urlId}?q=75&fm=jpg&w=200&fit=max`
+        });
+    }
 }
 
 fs.writeFileSync('fotos.json', JSON.stringify(fotos, null, 2));
