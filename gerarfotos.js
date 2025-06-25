@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const startAlbum = 1;
-const endAlbum = 140;
+const endAlbum = 34;
 const photosPerAlbum = 10;
 let id = 1;
 
